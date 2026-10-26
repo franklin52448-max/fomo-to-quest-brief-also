@@ -4,6 +4,7 @@ relay_brief.py - read-only Robinhood Chain research brief generator.
 
 Input : a Robinhood Chain (chain id 4663) token or wallet/contract address
 Data  : public RPC (eth_chainId, eth_getCode) + public Blockscout REST API v2
+        (free Blockscout API key via BLOCKSCOUT_API_KEY env var; no key is stored in code)
 Output: short markdown brief (default) or JSON (--json) that includes a
         ready-to-post Relay Tech research bounty draft.
 
@@ -15,10 +16,19 @@ from collections import Counter
 from datetime import datetime, timezone
 
 RPC_URL = os.environ.get("RH_RPC_URL", "https://rpc.mainnet.chain.robinhood.com")
-API_URL = os.environ.get("RH_API_URL", "https://robinhoodchain.blockscout.com/api/v2").rstrip("/")
+API_KEY = os.environ.get("BLOCKSCOUT_API_KEY", "")  # free key from https://dev.blockscout.com
+_default_api = ("https://api.blockscout.com/4663/api/v2" if API_KEY
+                else "https://robinhoodchain.blockscout.com/api/v2")
+API_URL = os.environ.get("RH_API_URL", _default_api).rstrip("/")
 EXPLORER = os.environ.get("RH_EXPLORER", "https://robinhoodchain.blockscout.com").rstrip("/")
 CHAIN_ID = 4663
-UA = {"User-Agent": "relay-brief/1.0 (read-only research tool)", "Accept": "application/json"}
+UA = {
+    "User-Agent": os.environ.get(
+        "RH_UA",
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0 Safari/537.36 relay-brief/1.0"),
+    "Accept": "application/json",
+}
 
 
 # ---------- tiny HTTP layer ----------
@@ -35,6 +45,10 @@ def _http(url, data=None, tries=4):
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 return None
+            if e.code == 403:
+                raise SystemExit(f"HTTP 403 from {url}\nThe endpoint blocked this request (bot/IP filter). "
+                                 "Blockscout now expects a free API key: get one at https://dev.blockscout.com "
+                                 "then run:  export BLOCKSCOUT_API_KEY=proapi_xxx")
             if e.code in (429, 500, 502, 503, 504) and i < tries - 1:
                 time.sleep(1.5 * (i + 1))
                 continue
@@ -52,6 +66,8 @@ def rpc(method, params):
 
 
 def api(path, **params):
+    if API_KEY:
+        params["apikey"] = API_KEY
     q = "&".join(f"{k}={v}" for k, v in params.items())
     return _http(f"{API_URL}{path}" + (f"?{q}" if q else ""))
 
