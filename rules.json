@@ -1,0 +1,14 @@
+{
+  "recent_tx_limit": 100,
+  "recent_transfer_limit": 100,
+  "burst_window_minutes": 10,
+  "burst_min_txs": 8,
+  "large_value_eth": 1.0,
+  "high_failure_ratio": 0.25,
+  "new_address_days": 7,
+  "dormant_days": 30,
+  "holder_top1_pct": 30,
+  "holder_top10_pct": 80,
+  "min_unique_counterparties_for_organic": 10,
+  "bounty_reward_usdg": 20
+}
