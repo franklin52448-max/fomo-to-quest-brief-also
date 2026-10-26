@@ -1,0 +1,134 @@
+{
+  "address": "0x492641F648a4986844848E0beFE66D14817bCE34",
+  "chain_id": 4663,
+  "generated_at": "2026-10-26T21:52:16.643288+00:00",
+  "kind": "token",
+  "flags": [
+    "Concentration: top holder owns 48.0% of supply.",
+    "Concentration: top 10 holders own 90.4% of supply."
+  ],
+  "signals": {
+    "total_transactions": 379,
+    "total_token_transfers": 3,
+    "balance_eth": 0.0,
+    "sampled_txs": 100,
+    "sample_first_tx": "2026-10-19T21:12:26+00:00",
+    "sample_last_tx": "2026-10-26T21:01:15+00:00",
+    "txs_per_day_in_sample": 14.3,
+    "days_since_last_tx": 0,
+    "max_txs_in_burst_window": 5,
+    "failed_tx_ratio": 0.0,
+    "unique_counterparties": 70,
+    "top_counterparties": [
+      {
+        "address": "0x63c9E4f81716dEBc57dB9Fbc60600106a44B9964",
+        "label": "0x63c9\u20269964",
+        "is_contract": false,
+        "tx_count": 6
+      },
+      {
+        "address": "0xfe1d53Ee627A3dEc116caF8D98309872E86De76e",
+        "label": "0xfe1d\u2026e76e",
+        "is_contract": false,
+        "tx_count": 5
+      },
+      {
+        "address": "0xC0b70C82a9CCf650b02386C9eF00043A6Be05d66",
+        "label": "0xC0b7\u20265d66",
+        "is_contract": true,
+        "tx_count": 4
+      },
+      {
+        "address": "0x633c93466b10c5760994bB372A3ccCcDA082366d",
+        "label": "0x633c\u2026366d",
+        "is_contract": false,
+        "tx_count": 4
+      },
+      {
+        "address": "0xbE9306dDf2c0Ddd69227aDB2C7e7ef4d0B5697D5",
+        "label": "0xbE93\u202697D5",
+        "is_contract": false,
+        "tx_count": 4
+      }
+    ],
+    "top_methods": [
+      {
+        "method": "approve",
+        "count": 94
+      },
+      {
+        "method": "transfer",
+        "count": 6
+      }
+    ],
+    "large_value_txs": [],
+    "transfer_types": {
+      "token_transfer": 3
+    },
+    "top_tokens_touched": [
+      {
+        "token": "VOLT",
+        "transfers": 1
+      },
+      {
+        "token": "DUMB!",
+        "transfers": 1
+      },
+      {
+        "token": "DIH",
+        "transfers": 1
+      }
+    ],
+    "token": {
+      "name": "Chainlink",
+      "symbol": "LINK",
+      "type": "ERC-20",
+      "decimals": 18,
+      "total_supply": 1010.1192186234115,
+      "holders_count": "302",
+      "top1_holder_pct": 48.05,
+      "top10_holders_pct": 90.42,
+      "top_holders": [
+        {
+          "address": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+          "label": "PoolManager",
+          "pct": 48.05
+        },
+        {
+          "address": "0xf93f3eff7624DA69db24730f4fBEE84CD6Bd6DAc",
+          "label": "0xf93f\u20266DAc",
+          "pct": 8.92
+        },
+        {
+          "address": "0x81b20760cdF5261b477A9215bdcA478fA041A140",
+          "label": "0x81b2\u2026A140",
+          "pct": 7.63
+        },
+        {
+          "address": "0xB022736Dc3bd42542c35933f0b5ef09b553eBb5A",
+          "label": "0xB022\u2026Bb5A",
+          "pct": 7.32
+        },
+        {
+          "address": "0xa01f9b15081bF213BEeB91D67caD13f9fd5D170b",
+          "label": "0xa01f\u2026170b",
+          "pct": 6.44
+        }
+      ]
+    },
+    "verified_contract": true,
+    "creator": "0x062f05CD6c835677B05a8658A351969476861316"
+  },
+  "bounty_draft": {
+    "title": "Deep-dive research on token LINK (Robinhood Chain)",
+    "description": "Investigate token 0x492641F648a4986844848E0beFE66D14817bCE34 on Robinhood Chain. Automated screen flagged: Concentration: top holder owns 48.0% of supply.; Concentration: top 10 holders own 90.4% of supply.. Deliver a verified written report with sources (explorer links).",
+    "deliverables": [
+      "Who deployed/controls it and how funds flow in and out",
+      "Explanation of each flagged signal: real risk or benign",
+      "Counterparty / holder cluster analysis",
+      "Clear verdict with evidence links"
+    ],
+    "reward_usdg": 20,
+    "reference": "https://robinhoodchain.blockscout.com/address/0x492641F648a4986844848E0beFE66D14817bCE34"
+  }
+}
