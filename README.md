@@ -59,17 +59,48 @@ address -> validate -> RPC (eth_chainId check, eth_getCode: contract or EOA)
 
 ## Real example
 
-Run on a real Robinhood Chain address:
+Real run on Robinhood Chain (chain ID 4663), October 26, 2026:
 
 ```bash
-python3 relay_brief.py <REAL_ADDRESS> --out example_output.md
-python3 relay_brief.py <REAL_ADDRESS> --json --out example_output.json
+python relay_brief.py 0x492641F648a4986844848E0beFE66D14817bCE34 --out example_output.md
+python relay_brief.py 0x492641F648a4986844848E0beFE66D14817bCE34 --json --out example_output.json
 ```
 
-**Address used:** `<REAL_ADDRESS>`
+**Address used:** `0x492641F648a4986844848E0beFE66D14817bCE34` (Chainlink, LINK)
+[View on explorer](https://robinhoodchain.blockscout.com/address/0x492641F648a4986844848E0beFE66D14817bCE34)
+
+Full output files: [`example_output.md`](example_output.md) and [`example_output.json`](example_output.json).
 
 **Sample output:**
 
 ```
-<paste example_output.md here>
+# Research brief: LINK
+`0x492641F648a4986844848E0beFE66D14817bCE34` - token - Robinhood Chain (4663)
+https://robinhoodchain.blockscout.com/address/0x492641F648a4986844848E0beFE66D14817bCE34
+
+## Flags
+- Concentration: top holder owns 48.0% of supply.
+- Concentration: top 10 holders own 90.4% of supply.
+
+## Key metrics
+- Balance: 0.0 ETH
+- Lifetime txs: 375 | token transfers: 3
+- Sample: 100 latest txs, 14.3 tx/day, last tx 0 day(s) ago
+- Failed tx ratio: 0% | unique counterparties: 70
+
+## Token
+- Chainlink (LINK), ERC-20, supply 1010.1192186234115, holders 302
+- Top holder 48.05% | top 10 90.42%
+
+## Top counterparties
+- 0x63c9…9964 (EOA) x6
+- 0xfe1d…e76e (EOA) x5
+- 0xC0b7…5d66 (contract) x4
+- 0x633c…366d (EOA) x4
+- 0xbE93…97D5 (EOA) x4
+
+## Top contract methods
+approve x94, transfer x6
 ```
+
+**Reading it:** the token is actively used (14.3 tx/day, 70 unique counterparties, 0% failures), but supply is heavily concentrated: one holder has 48% and the top 10 hold 90%. That is the signal a researcher would follow up, which is exactly what the `bounty_draft` field in the JSON output turns into a Relay Tech research bounty.
